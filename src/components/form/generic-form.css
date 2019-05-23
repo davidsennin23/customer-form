@@ -1,0 +1,33 @@
+form {
+    margin: 0 auto;
+    width: auto;
+    padding: 1em 10em;
+}
+
+.form-line {
+    width: 100%;
+    padding: .3em 0;
+}
+
+.form-line .label {
+    width: 30%;
+    float: left;
+    position: relative;
+    top: .5em;
+}
+
+.label label {
+    float: right;
+    margin-right: 1em;
+}
+
+.form-line div.component {
+    float: left;
+    width: 60%;
+}
+
+.component input {
+    padding: .7em;
+    width: 100%;
+    border-radius: .4em;
+}
