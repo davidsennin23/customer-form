@@ -1,11 +1,15 @@
 import React from 'react';
 import './App.css';
 import GenericForm from './components/form/GenericForm';
+import DataContainer from './components/data-toggle/DataContainer';
 
 function App() {
   return (
     <div className="App">
-      <GenericForm></GenericForm>
+      <DataContainer>
+        <GenericForm></GenericForm>
+      </DataContainer>
+      
     </div>
   );
 }

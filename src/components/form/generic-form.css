@@ -10,24 +10,27 @@ form {
 }
 
 .form-line .label {
-    width: 30%;
-    float: left;
+    /* width: 30%; */
+    /* float: left; */
+    display: inline;
     position: relative;
     top: .5em;
 }
 
 .label label {
-    float: right;
+    float: left;
     margin-right: 1em;
 }
 
 .form-line div.component {
-    float: left;
-    width: 60%;
+    /* float: left; */
+    /* width: 60%; */
+    display: inline;
 }
 
 .component input {
     padding: .7em;
     width: 100%;
     border-radius: .4em;
+    font-size: 1em;
 }
