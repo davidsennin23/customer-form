@@ -34,3 +34,6 @@ form {
     border-radius: .4em;
     font-size: 1em;
 }
+.component input:focus {
+    border: 1px solid gray;
+}
