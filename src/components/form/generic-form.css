@@ -37,3 +37,7 @@ form {
 .component input:focus {
     border: 1px solid gray;
 }
+
+.component input:invalid {
+    border: 1px solid red;
+}

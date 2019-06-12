@@ -3,6 +3,7 @@ import FormLine from './FormLine';
 import InputValidation from './InputValidation';
 import inputNotBlank from './validation/inputNotBlank';
 import FoneMask from '../masks/FoneMask';
+import getValidatePatternFunction from './validation/validatePattern';
 import './generic-form.css'
 
 const initState = {
@@ -15,7 +16,9 @@ const initState = {
 
 const Nome = InputValidation(inputNotBlank)(FormLine);
 const Sobrenome = InputValidation(inputNotBlank)(FormLine);
-const Fone = FoneMask(FormLine);
+let Fone = FoneMask(FormLine);
+Fone = InputValidation(getValidatePatternFunction(/\(\d{2}\)\d{5}-\d{4}/, "(99)99999-9999"))(Fone);
+const Email = InputValidation(inputNotBlank)(FormLine)
 
 export default class GenericForm extends React.Component {
 
@@ -23,7 +26,6 @@ export default class GenericForm extends React.Component {
 
     handleChange = (e) => {
         const { name, value } = e.target;
-        console.log(value);
         this.setState({
             [name]: value
         })
@@ -42,6 +44,7 @@ export default class GenericForm extends React.Component {
                 <Sobrenome label="Sobrenome" type="text" name="sobrenome" value={sobrenome} onChange={this.handleChange}></Sobrenome>
                 <FormLine label="Nascimento" type="date" name="nascimento" value={nascimento} onChange={this.handleChange}></FormLine>
                 <Fone label="Telefone" type="text" name="telefone" value={telefone} onChange={this.handleChange}></Fone>
+                <Email label="E-Mail" type="email" name="email" value={email} onChange={this.handleChange}></Email>
                 {/* <FormLine label="Nome" type="text" name="nome" value={nome} onChange={this.handleChange}></FormLine>
                 <FormLine label="Sobrenome" type="text" name="sobrenome" value={sobrenome} onChange={this.handleChange}></FormLine>
                 <FormLine label="Nascimento" type="date" name="nascimento" value={nascimento} onChange={this.handleChange}></FormLine>

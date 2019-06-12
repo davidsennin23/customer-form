@@ -19,8 +19,11 @@ const InputValidation = (...validationFunction) => (Input) =>
             this.setState({canApply: false, isValid: false});
         }
 
-        handleBlur = () => {
-            this.setState({canApply: true, isValid: FunctionUtils.spreadCallBoolean(this.state.value, ...validationFunction) });
+        handleBlur = (e) => {
+            const msg = FunctionUtils.spreadCallFirstString(this.state.value, ...validationFunction);
+            console.log(msg);
+            e.target.setCustomValidity(msg);
+            this.setState({canApply: true, isValid: msg == "" });
         }
 
         getStyle = (isValid) => {
@@ -34,13 +37,13 @@ const InputValidation = (...validationFunction) => (Input) =>
             const {isValid, canApply} = this.state;
             return (
                 <Input {...this.props} valueChange={(e) => this.setState({value:e.target.value})} 
-                        validStyle={canApply ? this.getStyle(isValid) : {}} onFocus={this.handleFocus} onBlur={this.handleBlur}></Input>
+                        validStyle={{}} onFocus={this.handleFocus} onBlur={this.handleBlur}></Input>
             );
         }
 
     }
 
-
+    // canApply ? this.getStyle(isValid) : {}
 
 
 export default InputValidation;

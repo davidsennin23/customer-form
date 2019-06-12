@@ -13,7 +13,6 @@ const makeIntegrity = (integrity) => {
             array[key] = value[key];
             array[key-1] = "";
             integrity = array.join("");
-            console.log(integrity);
         }
     });
 
@@ -41,7 +40,6 @@ const FoneMask = (Input) =>
 
         maskerizeValue(value) {
             value += "___________";
-            console.log(value);
             let start = 0;
             let i = 0;
             return "(" + [2,5,4].map((index) => {
@@ -68,8 +66,9 @@ const FoneMask = (Input) =>
         render() {
             let { value } = this.state;
             value = this.maskerizeValue(numberizeValue(value));
+            const valueChange = this.props.valueChange || function() {};
             return (
-                <Input {...this.props} value={value} valueChange={(e) => this.handleChange(e)} onFocus={this.handleFocus}></Input>
+                <Input {...this.props} value={value} valueChange={(e) => {this.handleChange(e); valueChange(e)}} onFocus={this.handleFocus}></Input>
             );
 
         }
